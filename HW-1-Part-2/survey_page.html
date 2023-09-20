@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS Department Survey</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #006633; /* gmu-green */
+      font-family: "Montserrat", sans-serif
+    }
+
+    .gmu-yellow {
+      color: #FFCC33;
+    }
+
+    .gmu-green {
+      color: #006633;
+    }
+
+    .required-label::after {
+      content: " *";
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container d-flex justify-content-center align-items-center flex-column">
+    <a href="/department_page.html">
+      <img src="/img/cs_department_logo.png" alt="CS Department Logo" width="500" height="100"
+           class="d-inline-block align-top mb-3">
+    </a>
+  </div>
+</nav>
+
+<div class="container pt-2 p-5">
+  <h1 class="gmu-green">Survey</h1>
+  <p>We value your feedback about your campus visit. Please fill out the survey below:</p>
+
+  <form class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="username" class="form-label required-label">Username</label>
+      <input type="text" class="form-control" id="username" required placeholder="Example: John Doe 123">
+      <div class="invalid-feedback">
+        Please provide a username.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Street Address</label>
+      <input type="text" class="form-control" id="address" placeholder="Example: 123 Fairfax St">
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="city" class="form-label required-label">City</label>
+        <input type="text" class="form-control" id="city" required placeholder="Example: Fairfax">
+        <div class="invalid-feedback">
+          Please provide a city.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="state" class="form-label required-label">State</label>
+        <input type="text" class="form-control" id="state" required placeholder="Example: VA">
+        <div class="invalid-feedback">
+          Please provide a state.
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="zip" class="form-label required-label">Zip</label>
+        <input type="text" class="form-control" id="zip" required placeholder="Example: 22102">
+        <div class="invalid-feedback">
+          Please provide a zip code.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="telephone" class="form-label required-label">Telephone Number</label>
+      <input type="tel" class="form-control" id="telephone" required placeholder="Example: (123) 456-7890">
+      <div class="invalid-feedback">
+        Please provide a valid telephone number.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label required-label">Email</label>
+      <input type="email" class="form-control" id="email" required placeholder="Example: johndoe@gmu.edu">
+      <div class="invalid-feedback">
+        Please provide a valid email address.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="url" class="form-label">Website URL</label>
+      <input type="url" class="form-control" id="url" placeholder="Example: https://www.gmu.edu">
+    </div>
+
+    <div class="mb-3">
+      <label for="survey-date" class="form-label required-label">Date of Survey</label>
+      <input type="date" class="form-control" id="survey-date" required>
+      <div class="invalid-feedback">
+        Please select a date.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">What did you like most about the campus?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="liked-campus-students">
+        <label class="form-check-label" for="liked-campus-students">Students</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="liked-campus-location">
+        <label class="form-check-label" for="liked-campus-location">Location</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="liked-campus-atmosphere">
+        <label class="form-check-label" for="liked-campus-atmosphere">Atmosphere</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="liked-campus-dorms">
+        <label class="form-check-label" for="liked-campus-dorms">Dorm Rooms</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="liked-campus-sports">
+        <label class="form-check-label" for="liked-campus-sports">Sports</label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">How did you become interested in the university?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="interest" id="interest-friends">
+        <label class="form-check-label" for="interest-friends">Friends</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="interest" id="interest-television">
+        <label class="form-check-label" for="interest-television">Television</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="interest" id="interest-internet">
+        <label class="form-check-label" for="interest-internet">Internet</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="interest" id="interest-other">
+        <label class="form-check-label" for="interest-other">Other</label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="comments" class="form-label">Additional Comments</label>
+      <textarea class="form-control" id="comments" rows="4"
+                placeholder="Example: Your feedback is important to us."></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="graduation-month" class="form-label">High School Graduation Month</label>
+      <input list="graduation-months" class="form-control" id="graduation-month" placeholder="Example: January">
+      <datalist id="graduation-months">
+        <option value="January">
+        <option value="February">
+        <option value="March">
+        <option value="April">
+        <option value="May">
+        <option value="June">
+        <option value="July">
+        <option value="August">
+        <option value="September">
+        <option value="October">
+        <option value="November">
+        <option value="December">
+      </datalist>
+    </div>
+
+    <div class="mb-3">
+      <label for="graduation-year" class="form-label required-label">High School Graduation Year</label>
+      <input type="text" class="form-control" id="graduation-year" required placeholder="Example: 2023">
+      <div class="invalid-feedback">
+        Please provide a valid graduation year.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="likelihood" class="form-label">Likelihood of Recommending</label>
+      <select class="form-select" id="likelihood">
+        <option value="Very Likely">Very Likely</option>
+        <option value="Likely">Likely</option>
+        <option value="Unlikely">Unlikely</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success gmu-yellow" style="background-color: #006633;">Submit</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("username").focus();
+  });
+
+  const forms = document.querySelectorAll('.needs-validation');
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        alert("Thank you for submitting the form. Your feedback has been received.");
+        form.reset();
+      }
+
+      form.classList.add('was-validated');
+    }, false);
+  });
+</script>
+
+</body>
+</html>
