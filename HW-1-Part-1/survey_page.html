@@ -26,6 +26,10 @@
       content: " *";
       color: red;
     }
+
+    h1 {
+      color: #006633;
+    }
   </style>
 </head>
 <body>
@@ -53,8 +57,11 @@
     </div>
 
     <div class="mb-3">
-      <label for="address" class="form-label">Street Address</label>
+      <label for="address" class="form-label required-label">Street Address</label>
       <input type="text" class="form-control" id="address" placeholder="Example: 123 Fairfax St">
+      <div class="invalid-feedback">
+        Please provide a street address.
+      </div>
     </div>
 
     <div class="row">
@@ -116,8 +123,12 @@
         <label class="form-check-label" for="liked-campus-students">Students</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="liked-campus-location">
-        <label class="form-check-label" for="liked-campus-location">Location</label>
+        <input class="form-check-input" type="checkbox" id="liked-location">
+        <label class="form-check-label" for="liked-location">Location</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="liked-campus">
+        <label class="form-check-label" for="liked-campus">Campus</label>
       </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="liked-campus-atmosphere">
