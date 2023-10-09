@@ -34,12 +34,24 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container d-flex justify-content-center align-items-center flex-column">
-    <a href="./department_page.html">
-      <img src="./img/cs_department_logo.png" alt="CS Department Logo" width="500" height="100"
-           class="d-inline-block align-top mb-3">
-    </a>
+<!-- Bootstrap Navigation Bar -->
+<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar"
+            aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-grow-1 justify-content-around">
+          <li class="nav-item"><a class="nav-link" href="./index.html">Class Page</a></li>
+          <li class="nav-item">
+            <a class="navbar-brand" href="./survey_page.html">Akshath Phillips | SWE 642</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="./department_page.html">CS Department</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -208,7 +220,6 @@
 
     <div class="mt-4">
       <button type="submit" class="btn btn-success gmu-yellow" style="background-color: #006633;">Submit</button>
-      <a href="./department_page.html" class="btn btn-secondary mr-3">Back to CS Department</a>
     </div>
   </form>
 </div>
