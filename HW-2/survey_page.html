@@ -224,6 +224,25 @@
       </select>
     </div>
 
+    <div class="mb-3">
+      <label for="data" class="form-label required-label">Data</label>
+      <input type="text" class="form-control" id="data" required
+             placeholder="Enter 10 comma-separated numbers between 1 and 100">
+      <div class="invalid-feedback">
+        Please provide 10 comma-separated numbers between 1 and 100.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="average" class="form-label">Average</label>
+      <output id="average-output"></output>
+    </div>
+
+    <div class="mb-3">
+      <label for="maximum" class="form-label">Maximum</label>
+      <output id="maximum-output"></output>
+    </div>
+
     <div class="mt-4">
       <button type="submit" class="btn btn-success gmu-yellow" style="background-color: #006633;">Submit</button>
     </div>
@@ -302,26 +321,50 @@
   if (userName) {
     displayGreeting(userName);
 
-    // Attach a click event handler to the "Not you?" link
+    // Click event handler to the "Not you?" link
     const changeNameLink = document.querySelector('a[href="#change-name"]');
     if (changeNameLink) {
       changeNameLink.addEventListener('click', function (event) {
         event.preventDefault();
         const newName = prompt('Please enter your new name:');
         if (newName) {
-          setCookie('userName', newName); // Set the cookie to expire in 7 days
+          setCookie('userName', newName);
           displayGreeting(newName);
         }
       });
     }
   } else {
-    // Prompt the user to enter their name and set the cookie
     const name = prompt('Please enter your name:');
     if (name) {
-      setCookie('userName', name); // Set the cookie to expire in 7 days
+      setCookie('userName', name);
       displayGreeting(name);
     }
   }
+
+  // Calculate Average and Maximum
+  function calculate() {
+    const dataInput = document.getElementById('data');
+    const averageOutput = document.getElementById('average-output');
+    const maximumOutput = document.getElementById('maximum-output');
+
+    const data = dataInput.value.split(',').map(Number);
+
+    if (data.length !== 10 || data.some(num => isNaN(num) || num < 1 || num > 100)) {
+      dataInput.setCustomValidity('Please provide 10 comma-separated numbers between 1 and 100.');
+      averageOutput.textContent = '';
+      maximumOutput.textContent = '';
+    } else {
+      dataInput.setCustomValidity('');
+      const average = data.reduce((acc, val) => acc + val, 0) / data.length;
+      const maximum = Math.max(...data);
+      averageOutput.textContent = `Average: ${average.toFixed(2)}`;
+      maximumOutput.textContent = `Maximum: ${maximum}`;
+    }
+  }
+
+  // On Blur
+  document.getElementById('data').addEventListener('blur', calculate);
+
 </script>
 
 </body>
