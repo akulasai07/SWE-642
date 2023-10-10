@@ -106,11 +106,8 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="telephone" class="form-label required-label">Telephone Number</label>
-      <input type="tel" class="form-control" id="telephone" required placeholder="Example: (123) 456-7890">
-      <div class="invalid-feedback">
-        Please provide a valid telephone number.
-      </div>
+      <label for="telephone" class="form-label">Telephone Number</label>
+      <input type="tel" class="form-control" id="telephone" placeholder="Example: (123) 456-7890">
     </div>
 
     <div class="mb-3">
@@ -127,58 +124,61 @@
     </div>
 
     <div class="mb-3">
-      <label for="survey-date" class="form-label required-label">Date of Survey</label>
-      <input type="date" class="form-control" id="survey-date" required>
-      <div class="invalid-feedback">
-        Please select a date.
-      </div>
+      <label for="survey-date" class="form-label">Date of Survey</label>
+      <input type="date" class="form-control" id="survey-date">
     </div>
 
     <div class="mb-3">
-      <label class="form-label">What did you like most about the campus?</label>
+      <label class="form-label required-label">What did you like most about the campus?</label>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="liked-campus-students">
+        <input class="form-check-input" type="checkbox" id="liked-campus-students" required>
         <label class="form-check-label" for="liked-campus-students">Students</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="liked-location">
+        <input class="form-check-input" type="checkbox" id="liked-location" required>
         <label class="form-check-label" for="liked-location">Location</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="liked-campus">
+        <input class="form-check-input" type="checkbox" id="liked-campus" required>
         <label class="form-check-label" for="liked-campus">Campus</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="liked-campus-atmosphere">
+        <input class="form-check-input" type="checkbox" id="liked-campus-atmosphere" required>
         <label class="form-check-label" for="liked-campus-atmosphere">Atmosphere</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="liked-campus-dorms">
+        <input class="form-check-input" type="checkbox" id="liked-campus-dorms" required>
         <label class="form-check-label" for="liked-campus-dorms">Dorm Rooms</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="liked-campus-sports">
+        <input class="form-check-input" type="checkbox" id="liked-campus-sports" required>
         <label class="form-check-label" for="liked-campus-sports">Sports</label>
+      </div>
+      <div class="invalid-feedback">
+        Please select at least two checkboxes.
       </div>
     </div>
 
     <div class="mb-3">
-      <label class="form-label">How did you become interested in the university?</label>
+      <label class="form-label required-label">How did you become interested in the university?</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="interest" id="interest-friends">
+        <input class="form-check-input" type="radio" name="interest" id="interest-friends" required>
         <label class="form-check-label" for="interest-friends">Friends</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="interest" id="interest-television">
+        <input class="form-check-input" type="radio" name="interest" id="interest-television" required>
         <label class="form-check-label" for="interest-television">Television</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="interest" id="interest-internet">
+        <input class="form-check-input" type="radio" name="interest" id="interest-internet" required>
         <label class="form-check-label" for="interest-internet">Internet</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="interest" id="interest-other">
+        <input class="form-check-input" type="radio" name="interest" id="interest-other" required>
         <label class="form-check-label" for="interest-other">Other</label>
+      </div>
+      <div class="invalid-feedback">
+        Please select a radio button option.
       </div>
     </div>
 
@@ -208,11 +208,8 @@
     </div>
 
     <div class="mb-3">
-      <label for="graduation-year" class="form-label required-label">High School Graduation Year</label>
-      <input type="text" class="form-control" id="graduation-year" required placeholder="Example: 2023">
-      <div class="invalid-feedback">
-        Please provide a valid graduation year.
-      </div>
+      <label for="graduation-year" class="form-label">High School Graduation Year</label>
+      <input type="text" class="form-control" id="graduation-year" placeholder="Example: 2023">
     </div>
 
     <div class="mb-3">
@@ -262,20 +259,138 @@
     document.getElementById("username").focus();
   });
 
-  /*Form validation*/
+  function validateForm(event) {
+    const form = event.target;
+
+    // Remove previous validation states
+    form.classList.remove('was-validated');
+
+    // Lets collect all the errors to display as an alert
+    const errors = [];
+
+    // Name
+    const usernameInput = document.getElementById('username');
+    const username = usernameInput.value;
+    const namePattern = /^[a-zA-Z\s]+$/;
+    if (!namePattern.test(username)) {
+      errors.push("Name should contain only alphabets.");
+      usernameInput.classList.add('is-invalid');
+    } else {
+      usernameInput.classList.remove('is-invalid');
+    }
+
+    // Address
+    const addressInput = document.getElementById('address');
+    const address = addressInput.value;
+    const addressPattern = /^[a-zA-Z0-9\s,.'-]+$/;
+    if (!addressPattern.test(address)) {
+      errors.push("Address should contain appropriate characters.");
+      addressInput.classList.add('is-invalid');
+    } else {
+      addressInput.classList.remove('is-invalid');
+    }
+
+    // City
+    const cityInput = document.getElementById('city');
+    const city = cityInput.value;
+    const cityPattern = /^[a-zA-Z\s]+$/;
+    if (!cityPattern.test(city)) {
+      errors.push("City should contain only alphabets.");
+      cityInput.classList.add('is-invalid');
+    } else {
+      cityInput.classList.remove('is-invalid');
+    }
+
+    // State
+    const stateInput = document.getElementById('state');
+    const state = stateInput.value;
+    const statePattern = /^[a-zA-Z\s]+$/;
+    if (!statePattern.test(state)) {
+      errors.push("State should contain only alphabets.");
+      stateInput.classList.add('is-invalid');
+    } else {
+      stateInput.classList.remove('is-invalid');
+    }
+
+    // Zip
+    const zipInput = document.getElementById('zip');
+    const zip = zipInput.value;
+    const zipPattern = /^\d{5}$/;
+    if (!zipPattern.test(zip)) {
+      errors.push("Zip should be 5 digits.");
+      zipInput.classList.add('is-invalid');
+    } else {
+      zipInput.classList.remove('is-invalid');
+    }
+
+    // Email
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      errors.push("Please provide a valid email address.");
+      emailInput.classList.add('is-invalid');
+    } else {
+      emailInput.classList.remove('is-invalid');
+    }
+
+    // Checkboxes. At-least 2
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+    const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
+    if (checkedCheckboxes.length < 2) {
+      errors.push("Please select at least two checkboxes.");
+      checkboxes.forEach(checkbox => {
+        checkbox.classList.add('is-invalid');
+      });
+    } else {
+      checkboxes.forEach(checkbox => {
+        checkbox.classList.remove('is-invalid');
+      });
+    }
+
+    // Radio button, at-least 1
+    const radioButtons = form.querySelectorAll('input[type="radio"]');
+    const checkedRadio = Array.from(radioButtons).some(rb => rb.checked);
+    if (!checkedRadio) {
+      errors.push("Please select a radio button.");
+      radioButtons.forEach(radioButton => {
+        radioButton.classList.add('is-invalid');
+      });
+    } else {
+      radioButtons.forEach(radioButton => {
+        radioButton.classList.remove('is-invalid');
+      });
+    }
+
+    // Data
+    const dataInput = document.getElementById('data');
+    const data = dataInput.value;
+    const dataPattern = /^(\d{1,2}(,\s*\d{1,2}){9})$/;
+    if (!dataPattern.test(data)) {
+      errors.push("Please provide 10 comma-separated numbers between 1 and 100.");
+      dataInput.classList.add('is-invalid');
+    } else {
+      dataInput.classList.remove('is-invalid');
+    }
+
+
+    // Check if there are validation errors
+    if (errors.length > 0) {
+      event.preventDefault();
+
+      // Display all validation errors
+      const errorMessages = errors.join('\n');
+      alert(errorMessages);
+    } else {
+      // If all validations pass, show a success message and reset the form
+      alert("Thank you for submitting the form. Your feedback has been received.");
+      form.reset();
+    }
+  }
+
   const forms = document.querySelectorAll('.needs-validation');
   Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener('submit', function (event) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      } else {
-        alert("Thank you for submitting the form. Your feedback has been received.");
-        form.reset();
-      }
-
-      form.classList.add('was-validated');
-    }, false);
+    form.addEventListener('submit', validateForm, false);
   });
 
   /*Cookies*/
