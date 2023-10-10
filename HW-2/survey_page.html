@@ -100,6 +100,12 @@
       <div class="col-md-3 mb-3">
         <label for="zip" class="form-label required-label">Zip</label>
         <input type="text" class="form-control" id="zip" required placeholder="Example: 22102">
+        <div class="small p-2">
+          The following zip codes are auto completed.
+          <div>
+            22312, 22030, 22301, and 20148.
+          </div>
+        </div>
         <div class="invalid-feedback">
           Please provide a zip code.
         </div>
@@ -480,6 +486,34 @@
 
   // On Blur
   document.getElementById('data').addEventListener('blur', calculate);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const zipcodeInput = document.getElementById("zip");
+    const cityInput = document.getElementById("city");
+    const stateInput = document.getElementById("state");
+
+    zipcodeInput.addEventListener("blur", function () {
+      const enteredZip = zipcodeInput.value;
+
+      // Make an Ajax call to get the JSON data
+      fetch("https://gmu-swe-642-aphill5-hw2.s3.amazonaws.com/zipcodes.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const matchingZipcode = data['zipcodes'].find((zipcode) => zipcode['zip'] === enteredZip);
+
+          if (matchingZipcode) {
+            cityInput.value = matchingZipcode['city'];
+            stateInput.value = matchingZipcode['state'];
+          } else {
+            cityInput.value = "";
+            stateInput.value = "";
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data: " + error);
+        });
+    });
+  });
 
 </script>
 
