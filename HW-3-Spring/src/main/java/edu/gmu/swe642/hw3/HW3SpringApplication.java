@@ -1,4 +1,4 @@
-package edu.gmu.swe642.hw3.spring;
+package edu.gmu.swe642.hw3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

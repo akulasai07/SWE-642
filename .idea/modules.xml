@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HW-2.iml" filepath="$PROJECT_DIR$/HW-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HW-3-Spring/HW-3-Spring.iml" filepath="$PROJECT_DIR$/HW-3-Spring/HW-3-Spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SWE-642.iml" filepath="$PROJECT_DIR$/.idea/SWE-642.iml" />
     </modules>
   </component>
